@@ -1,6 +1,6 @@
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
-local OWNER_ID = 5377132863
+local OWNER_ID = 5377132861
 
 LocalPlayer:SetAttribute("VapeUser", true)
 
