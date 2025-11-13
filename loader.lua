@@ -12,7 +12,7 @@ end
 local function downloadFile(path, func)
 	if not isfile(path) then
 		local suc, res = pcall(function()
-			return game:HttpGet('https://raw.githubusercontent.com/kiyo2007/VapeV4ForRoblox/'..readfile('newvape/profiles/commit.txt')..'/'..select(1, path:gsub('newvape/', '')), true)
+			return game:HttpGet('https://raw.githubusercontent.com/kiyo2007/VapeV4ForRoblox/'..readfile('rise/profiles/commit.txt')..'/'..select(1, path:gsub('newvape/', '')), true)
 		end)
 		if not suc or res == '404: Not Found' then
 			error(res)
@@ -35,7 +35,7 @@ local function wipeFolder(path)
 	end
 end
 
-for _, folder in {'newvape', 'newvape/games', 'newvape/profiles', 'newvape/assets', 'newvape/libraries', 'newvape/guis'} do
+for _, folder in {'rise', 'rise/games', 'rise/profiles', 'rise/assets', 'rise/libraries', 'rise/guis'} do
 	if not isfolder(folder) then
 		makefolder(folder)
 	end
@@ -48,13 +48,13 @@ if not shared.VapeDeveloper then
 	local commit = subbed:find('currentOid')
 	commit = commit and subbed:sub(commit + 13, commit + 52) or nil
 	commit = commit and #commit == 40 and commit or 'main'
-	if commit == 'main' or (isfile('newvape/profiles/commit.txt') and readfile('newvape/profiles/commit.txt') or '') ~= commit then
-		wipeFolder('newvape')
-		wipeFolder('newvape/games')
-		wipeFolder('newvape/guis')
-		wipeFolder('newvape/libraries')
+	if commit == 'main' or (isfile('newvape/profiles/commit.txt') and readfile('rise/profiles/commit.txt') or '') ~= commit then
+		wipeFolder('rise')
+		wipeFolder('rise/games')
+		wipeFolder('rise/guis')
+		wipeFolder('rise/libraries')
 	end
-	writefile('newvape/profiles/commit.txt', commit)
+	writefile('rise/profiles/commit.txt', commit)
 end
 
-return loadstring(downloadFile('newvape/main.lua'), 'main')()
+return loadstring(downloadFile('rise/main.lua'), 'main')()
